@@ -1,0 +1,133 @@
+.item {
+  text-decoration: underline;
+  background-color: #333333;
+}
+
+.item li {
+  text-decoration: none;
+  background-color: #333333;
+}
+
+.container {
+  height: 70px;
+  background-color: #333333;
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  padding-right: 140px;
+  padding-left: 140px;
+}
+
+.logo {
+  background-color: #333333;
+  text-decoration: none;
+  font-size: 32px;
+}
+
+.search-bar {
+  background-color: #c1c1c1;
+  border-radius: 20px;
+  width: 398px;
+  height: 38px;
+  font-size: larger;
+  border-style: none;
+}
+
+.prof-bar {
+  height: 60px;
+  background-color: #333333;
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  padding-right: 140px;
+  padding-left: 140px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #474747;
+  border-right-style: none;
+  border-left-style: none;
+}
+
+.prof-bar a {
+  text-decoration: none;
+  background-color: #333333;
+  font-size: 20px;
+}
+
+.main-container {
+  display: flex;
+  margin-left: 140px;
+  margin-top: 85px;
+}
+
+.mat-container {
+  min-height: 179px;
+  background-color: #333333;
+  min-width: 398px;
+  max-width: 398px;
+  border-radius: 5px;
+  align-self: flex-start;
+}
+
+.crafting-container {
+  min-width: 812px;
+  min-height: 710px;
+  max-height: 710px;
+  max-width: 812px;
+  margin-left: 16px;
+  background-color: #333333;
+  border-radius: 5px;
+}
+
+.crafting-wrapper {
+  margin-left: 18px;
+  margin-top: 16px;
+}
+
+.mats-required {
+  min-width: 258px;
+  min-height: 100px;
+  background-color: #333333;
+  margin-left: 16px;
+  align-self: flex-start;
+}
+
+.mats {
+  background-color: #333333;
+}
+
+.mats-li {
+  background-color: #333333;
+}
+
+.btn {
+  background-color: #c1c1c1;
+  color: #333333;
+  font-size: 18px;
+  border-radius: 5px;
+  font-weight: bold;
+  border-style: none;
+  width: 30px;
+  height: 30px;
+}
+
+.mat-wrapper {
+  background-color: #333333;
+  margin: 16px;
+  font-size: 20px;
+  display: flex;
+}
+
+.input {
+  margin: auto;
+  height: 24px;
+  margin-right: 16px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #474747;
+  background-color: #c1c1c1;
+}
