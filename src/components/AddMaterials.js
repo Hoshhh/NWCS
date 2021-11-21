@@ -2,11 +2,14 @@ import React from 'react'
 import MaterialForm from './MaterialForm'
 
 const AddMaterials = ({playerInfo}) => {
+// Add Mats
+const addMats = (playerInfo) => {
+    console.log(playerInfo)
+}
+
     return (
         <div className="mat-container">
-            <MaterialForm mat="Linen" />
-            <MaterialForm mat="Course Leather" />
-            <MaterialForm mat="Iron Ingot" />
+            <MaterialForm onAdd={addMats} playerInfo={playerInfo} />
         </div>
     )
 }
