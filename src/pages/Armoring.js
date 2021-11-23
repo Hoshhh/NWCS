@@ -14,7 +14,7 @@ const Armoring = ({playerInfo}) => {
             <ProfessionsBar />
             <div className="main-container">
                 <AddMaterials playerInfo={playerInfo} />
-                <CraftingList armor={armoring} />
+                <CraftingList armor={armoring} playerInfo={playerInfo} />
                 <MaterialsRequired />
             </div>
         </div>

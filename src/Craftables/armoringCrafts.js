@@ -2,7 +2,7 @@ const armoring = [
     {
         id: 0,
         name: "Linen Hat",
-        img: "",
+        img: "https://cdn.nwdb.info/db/images/live/v1/icons/items/armor/lightheadat2.png",
         description: "",
         xp: 216,
         levelReq: 0,
@@ -25,7 +25,7 @@ const armoring = [
     {
         id: 1,
         name: "Linen Shirt",
-        img: "",
+        img: "https://cdn.nwdb.info/db/images/live/v1/icons/items/armor/lightchestat2.png",
         description: "",
         xp: 420,
         levelReq: 0,
@@ -48,7 +48,7 @@ const armoring = [
     {
         id: 2,
         name: "Linen Gloves",
-        img: "",
+        img: "https://cdn.nwdb.info/db/images/live/v1/icons/items/armor/lighthandsat2.png",
         description: "",
         xp: 108,
         levelReq: 0,
@@ -71,7 +71,7 @@ const armoring = [
     {
         id: 3,
         name: "Linen Pants",
-        img: "",
+        img: "https://cdn.nwdb.info/db/images/live/v1/icons/items/armor/lightlegsat2.png",
         description: "",
         xp: 216,
         levelReq: 0,
@@ -94,7 +94,7 @@ const armoring = [
     {
         id: 4,
         name: "Linen Shoes",
-        img: "",
+        img: "https://cdn.nwdb.info/db/images/live/v1/icons/items/armor/lightfeetat2.png",
         description: "",
         xp: 108,
         levelReq: 0,

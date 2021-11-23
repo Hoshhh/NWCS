@@ -1,13 +1,3 @@
-.item {
-  text-decoration: underline;
-  background-color: #333333;
-}
-
-.item li {
-  text-decoration: none;
-  background-color: #333333;
-}
-
 .container {
   height: 70px;
   background-color: #333333;
@@ -75,17 +65,89 @@
 
 .crafting-container {
   min-width: 812px;
-  min-height: 710px;
-  max-height: 710px;
-  max-width: 812px;
+  min-height: 720px;
+  height: 720px;
+  width: 812px;
   margin-left: 16px;
   background-color: #333333;
   border-radius: 5px;
 }
 
 .crafting-wrapper {
-  margin-left: 18px;
-  margin-top: 16px;
+  margin-left: 65px;
+  margin-top: 65px;
+  width: 682px;
+  position: relative;
+}
+
+.item {
+  width: 682px;
+  height: 100px;
+  margin-right: 65px;
+  padding-bottom: 20px;
+  background-color: #333333;
+}
+
+.item-container {
+  height: 100px;
+  display: flex;
+  font-size: 30px;
+  margin: auto;
+  justify-content: center;
+}
+
+.item-img {
+  width: 100px;
+  height: 100px;
+  background-color: #c1c1c1;
+}
+
+.item-name {
+  font-size: 30px;
+  width: 168px;
+  margin: auto;
+  justify-content: center;
+}
+
+.item-lvlreq {
+  font-size: 26px;
+  margin: auto;
+  justify-content: center;
+}
+
+.item-xp {
+  font-size: 26px;
+  margin: auto;
+  justify-content: center;
+}
+
+.btn-container {
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.add {
+  font-size: 20px;
+  justify-content: center;
+  height: 33px;
+  width: 33px;
+  margin-right: 10px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #333333;
+  border: none;
+}
+.subtract {
+  font-size: 20px;
+  justify-content: center;
+  height: 33px;
+  width: 33px;
+  margin-right: 10px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #333333;
+  border: none;
 }
 
 .mats-required {
