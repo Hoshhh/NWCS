@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CraftingList = ({armor}) => {
+const CraftingList = ({armor, playerInfo}) => {
     return (
         <div className="crafting-container">
             <div className="crafting-wrapper">
@@ -15,7 +15,7 @@ const CraftingList = ({armor}) => {
                                         <div className="item-lvlreq">{item.levelReq}</div>
                                         <div className="item-xp" >{item.xp}</div>
                                         <div className="btn-container"> 
-                                            <button className="add">+</button>
+                                            <button className="add" onClick={() => console.log(playerInfo.linen, playerInfo.courseLeather)}>+</button>
                                             <button className="subtract">-</button>
                                         </div>
                                     </div>

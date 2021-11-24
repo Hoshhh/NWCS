@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const MaterialForm = ({onAdd, playerInfo}) => {
+const MaterialForm = ({playerInfo}) => {
     const [amountLinen, setAmountLinen] = useState(0)
     const [amountCourseLeather, setAmountCourseLeather] = useState(0)
     const [amountIronIngot, setAmountIronIngot] = useState(0)
@@ -23,8 +23,10 @@ const MaterialForm = ({onAdd, playerInfo}) => {
         setIronIngotText(amountIronIngot)
 
         setShowAddMats(false)
-        console.log(playerInfo)
+        
+        //console.log(playerInfo)
     }
+
     return (
         <form className="add-form" onSubmit={onSubmit}>
             <div className="mat-wrapper">
