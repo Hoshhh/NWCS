@@ -1,11 +1,10 @@
-import React from 'react'
-import MaterialForm from './MaterialForm'
+import React, {useState} from 'react'
 
-const AddMaterials = ({playerInfo}) => {
+const AddMaterials = ({text, matAmount}) => {
     return (
-        <div className="mat-container">
-            <MaterialForm playerInfo={playerInfo} />
-        </div>
+        <>
+            {text + matAmount}
+        </>
     )
 }
 

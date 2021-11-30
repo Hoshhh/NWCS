@@ -6,6 +6,7 @@ const armoring = [
         description: "",
         xp: 216,
         levelReq: 0,
+        crafts: 0,
         materials: [
             {
                 mat: "Linen",
@@ -29,6 +30,7 @@ const armoring = [
         description: "",
         xp: 420,
         levelReq: 0,
+        crafts: 0,
         materials: [
             {
                 mat: "Linen",
@@ -52,6 +54,7 @@ const armoring = [
         description: "",
         xp: 108,
         levelReq: 0,
+        crafts: 0,
         materials: [
             {
                 mat: "Linen",
@@ -75,6 +78,7 @@ const armoring = [
         description: "",
         xp: 216,
         levelReq: 0,
+        crafts: 0,
         materials: [
             {
                 mat: "Linen",
@@ -98,6 +102,7 @@ const armoring = [
         description: "",
         xp: 108,
         levelReq: 0,
+        crafts: 0,
         materials: [
             {
                 mat: "Linen",
