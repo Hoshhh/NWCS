@@ -180,3 +180,12 @@
 .item-counter {
   margin: 0;
 }
+
+.craft-btn {
+  float: right;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}

@@ -10,17 +10,18 @@ const armoring = [
         materials: [
             {
                 mat: "Linen",
-                amount: 11
+                linenCost: 11
             },
             {
                 mat: "Course Leather",
-                amount: 6
+                courseLeatherCost: 6
             },
             {
                 mat: "Iron Ingot",
-                amount: 1
+                ironIngotCost: 1
             }
-        ]
+        ],
+        linenTotal: 0
     },
 
     {
@@ -34,17 +35,18 @@ const armoring = [
         materials: [
             {
                 mat: "Linen",
-                amount: 22
+                linenCost: 22
             },
             {
                 mat: "Course Leather",
-                amount: 12
+                courseLeatherCost: 12
             },
             {
                 mat: "Iron Ingot",
-                amount: 1
+                ironIngotCost: 1
             }
-        ]
+        ],
+        linenTotal: 0
     },
 
     {
@@ -58,17 +60,18 @@ const armoring = [
         materials: [
             {
                 mat: "Linen",
-                amount: 4
+                linenCost: 4
             },
             {
                 mat: "Course Leather",
-                amount: 4
+                courseLeatherCost: 4
             },
             {
                 mat: "Iron Ingot",
-                amount: 1
+                ironIngotCost: 1
             }
-        ]
+        ],
+        linenTotal: 0
     },
 
     {
@@ -82,17 +85,18 @@ const armoring = [
         materials: [
             {
                 mat: "Linen",
-                amount: 10
+                linenCost: 10
             },
             {
                 mat: "Course Leather",
-                amount: 6
+                courseLeatherCost: 6
             },
             {
                 mat: "Iron Ingot",
-                amount: 2
+                ironIngotCost: 2
             }
-        ]
+        ],
+        linenTotal: 0
     },
 
     {
@@ -106,17 +110,18 @@ const armoring = [
         materials: [
             {
                 mat: "Linen",
-                amount: 5
+                linenCost: 5
             },
             {
                 mat: "Course Leather",
-                amount: 3
+                courseLeatherCost: 3
             },
             {
                 mat: "Iron Ingot",
-                amount: 1
+                ironIngotCost: 1
             }
-        ]
+        ],
+        linenTotal: 0
     },
 ]
 

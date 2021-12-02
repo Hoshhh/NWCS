@@ -18,8 +18,10 @@ const Armoring = () => {
     const [courseLeatherAmount, setCourseLeatherAmount] = useState(player.courseLeather)
     const [ironIngotAmount, setIronIngotAmount] = useState(player.ironIngot)
     const [showAddMats, setShowAddMats] = useState(false)
-    const [craftAmount, setCraftAmount] = useState(0)
+    const [craftAmount, setCraftAmount] = useState(armoring.crafts)
     const [craftUpdate, setCraftUpdate] = useState(0)
+    const [linenTotal, setLinenTotal] = useState(armoring.linenTotal)
+
 
     const [newPlayer, setNewPlayer] = useState(player)
 
@@ -38,12 +40,39 @@ const Armoring = () => {
         let updating = craftUpdate //Used to rerender when there's no value changed between the different "craftAmounts"
         updating++
 
-        item.crafts++
-        setCraftAmount(item.crafts)
+        if (item.materials[0].linenCost * (item.crafts) < linenAmount + item.materials[0].linenCost) {
+            if (item.materials[0].linenCost * (item.crafts) > linenAmount - item.materials[0].linenCost) {
+                item.crafts--
+                setCraftAmount(item.crafts)
+            }
+            item.crafts++
+            setCraftAmount(item.crafts)
+            if (item.crafts > 0) {
+                setLinenTotal(item.materials[0].linenCost * (item.crafts))
+            }
+        }
+         console.log("Cost: " + item.materials[0].linenCost)
+         console.log("Crafts: " + item.crafts)
+        // console.log("Total: " + linenTotal)
+
         setCraftUpdate(updating)
-        console.log(item.crafts)
     }
 
+    const subtract = (item) => {
+        let updating = craftUpdate 
+        updating++
+
+        if (item.crafts > 0) {
+            item.crafts--
+        }
+        setCraftAmount(item.crafts)
+        setLinenTotal(item.materials[0].linenCost * (item.crafts))
+        setCraftUpdate(updating)
+        console.log(item.crafts)
+        console.log(item.materials[0].linenCost * (item.crafts))
+    }
+
+    console.log("Total: " + linenTotal)
     return (
         <div>
             <Navbar />
@@ -115,7 +144,7 @@ const Armoring = () => {
                                             </div>
                                             <div className="btn-flex-container">
                                                 <button onClick={() => add(item)} className="add-btn">+</button>
-                                                <button className="subtract-btn">-</button>
+                                                <button onClick={() => subtract(item)} className="subtract-btn">-</button>
                                                 <div className="item-counter">x {item.crafts}</div>
                                             </div>
                                         </div>
@@ -126,6 +155,7 @@ const Armoring = () => {
                         ))
                     }
                     </div>
+                    <button className="craft-btn">Craft</button>
                 </div>
                 { /*
                     <CraftingList />
