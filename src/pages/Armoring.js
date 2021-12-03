@@ -53,7 +53,6 @@ const Armoring = () => {
         }
          console.log("Cost: " + item.materials[0].linenCost)
          console.log("Crafts: " + item.crafts)
-        // console.log("Total: " + linenTotal)
 
         setCraftUpdate(updating)
     }
