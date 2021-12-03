@@ -3,7 +3,7 @@ import "../Styles/Armoring.css"
 import Navbar from '../components/Navbar'
 import ProfessionsBar from '../components/ProfessionsBar'
 import AddMaterials from '../components/AddMaterials'
-import MaterialsRequired from '../components/MaterialsRequired'
+//import MaterialsRequired from '../components/MaterialsRequired'
 import armoring from '../Craftables/armoringCrafts'
 
 const player = {
@@ -21,6 +21,7 @@ const Armoring = () => {
     const [craftAmount, setCraftAmount] = useState(armoring.crafts)
     const [craftUpdate, setCraftUpdate] = useState(0)
     const [linenTotal, setLinenTotal] = useState(armoring.linenTotal)
+    const [linenSum, setLinenSum] = useState(0)
 
 
     const [newPlayer, setNewPlayer] = useState(player)
@@ -35,43 +36,56 @@ const Armoring = () => {
         setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
         console.log(player)
     }
+ 
 
     const add = (item) => {
         let updating = craftUpdate //Used to rerender when there's no value changed between the different "craftAmounts"
         updating++
+        
+        //Adding all totalLinen values together
+        if (linenSum < linenAmount - item.materials[0].linenCost) {
+            setLinenSum(linenSum + item.materials[0].linenCost)
+        }
 
-        if (item.materials[0].linenCost * (item.crafts) < linenAmount + item.materials[0].linenCost) {
-            if (item.materials[0].linenCost * (item.crafts) > linenAmount - item.materials[0].linenCost) {
-                item.crafts--
+        if (linenSum > linenAmount) {
+            setLinenSum(linenSum - item.materials[0].linenCost)
+        }
+
+        if (linenSum < linenAmount - item.materials[0].linenCost){
+            if (item.materials[0].linenCost * (item.crafts) < linenAmount + item.materials[0].linenCost) {
+                if (item.materials[0].linenCost * (item.crafts) > linenAmount - item.materials[0].linenCost) {
+                    item.crafts--
+                    setCraftAmount(item.crafts)
+                }
+                item.crafts++
                 setCraftAmount(item.crafts)
-            }
-            item.crafts++
-            setCraftAmount(item.crafts)
-            if (item.crafts > 0) {
-                setLinenTotal(item.materials[0].linenCost * (item.crafts))
+                if (item.crafts > 0) {
+                    setLinenTotal(item.materials[0].linenCost * (item.crafts))
+                }
             }
         }
-         console.log("Cost: " + item.materials[0].linenCost)
-         console.log("Crafts: " + item.crafts)
-
         setCraftUpdate(updating)
     }
 
-    const subtract = (item) => {
+    const subtract = (item) => {      
         let updating = craftUpdate 
         updating++
+
+        if ((linenSum >= item.materials[0].linenCost * (item.crafts)) && (item.crafts > 0)) {
+            setLinenSum(linenSum - item.materials[0].linenCost)
+        }
 
         if (item.crafts > 0) {
             item.crafts--
         }
+
         setCraftAmount(item.crafts)
         setLinenTotal(item.materials[0].linenCost * (item.crafts))
         setCraftUpdate(updating)
-        console.log(item.crafts)
-        console.log(item.materials[0].linenCost * (item.crafts))
     }
+    console.log(linenSum)
+    console.log(linenAmount)
 
-    console.log("Total: " + linenTotal)
     return (
         <div>
             <Navbar />
