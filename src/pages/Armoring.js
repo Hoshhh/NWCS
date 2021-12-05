@@ -22,6 +22,11 @@ const Armoring = () => {
     const [craftUpdate, setCraftUpdate] = useState(0)
     const [linenTotal, setLinenTotal] = useState(armoring.linenTotal)
     const [linenSum, setLinenSum] = useState(0)
+    const [courseLeatherTotal, setCourseLeatherTotal] = useState(armoring.courseLeatherTotal)
+    const [courseLeatherSum, setCourseLeatherSum] = useState(0)
+    const [ironIngotTotal, setIronIngotTotal] = useState(armoring.ironIngotTotal)
+    const [ironIngotSum, setIronIngotSum] = useState(0)
+    
 
 
     const [newPlayer, setNewPlayer] = useState(player)
@@ -43,17 +48,21 @@ const Armoring = () => {
         updating++
         
         //Adding all totalLinen values together
-        if (linenSum < linenAmount - item.materials[0].linenCost) {
+        if ((linenSum < linenAmount - item.materials[0].linenCost) && (courseLeatherSum < courseLeatherAmount - item.materials[1].courseLeatherCost) && (ironIngotSum < ironIngotAmount - item.materials[2].ironIngotCost)) {
             setLinenSum(linenSum + item.materials[0].linenCost)
+            setCourseLeatherSum(courseLeatherSum + item.materials[1].courseLeatherCost)
+            setIronIngotSum(ironIngotSum + item.materials[2].ironIngotCost)
         }
 
-        if (linenSum > linenAmount) {
+        if ((linenSum > linenAmount) && (courseLeatherSum > courseLeatherAmount) && (ironIngotSum > ironIngotAmount)) {
             setLinenSum(linenSum - item.materials[0].linenCost)
+            setCourseLeatherSum(courseLeatherSum - item.materials[1].courseLeatherCost)
+            setIronIngotSum(ironIngotSum - item.materials[2].ironIngotCost)
         }
 
-        if (linenSum < linenAmount - item.materials[0].linenCost){
-            if (item.materials[0].linenCost * (item.crafts) < linenAmount + item.materials[0].linenCost) {
-                if (item.materials[0].linenCost * (item.crafts) > linenAmount - item.materials[0].linenCost) {
+        if ((linenSum < linenAmount - item.materials[0].linenCost) && (courseLeatherSum < courseLeatherAmount - item.materials[1].courseLeatherCost) && (ironIngotSum < ironIngotAmount - item.materials[2].ironIngotCost)){
+            if ((item.materials[0].linenCost * (item.crafts) < linenAmount + item.materials[0].linenCost) && (item.materials[1].courseLeatherCost * (item.crafts) < courseLeatherAmount + item.materials[1].courseLeatherCost) && (item.materials[2].ironIngotCost * (item.crafts) < ironIngotAmount + item.materials[2].ironIngotCost)) {
+                if ((item.materials[0].linenCost * (item.crafts) > linenAmount - item.materials[0].linenCost) && (item.materials[1].courseLeatherCost * (item.crafts) > courseLeatherAmount - item.materials[1].courseLeatherCost) && (item.materials[2].ironIngotCost * (item.crafts) > ironIngotAmount - item.materials[2].ironIngotCost)) {
                     item.crafts--
                     setCraftAmount(item.crafts)
                 }
@@ -61,6 +70,8 @@ const Armoring = () => {
                 setCraftAmount(item.crafts)
                 if (item.crafts > 0) {
                     setLinenTotal(item.materials[0].linenCost * (item.crafts))
+                    setCourseLeatherTotal(item.materials[1].courseLeatherCost * (item.crafts))
+                    setIronIngotTotal(item.materials[2].ironIngotCost * (item.crafts))
                 }
             }
         }
@@ -71,8 +82,10 @@ const Armoring = () => {
         let updating = craftUpdate 
         updating++
 
-        if ((linenSum >= item.materials[0].linenCost * (item.crafts)) && (item.crafts > 0)) {
+        if ((linenSum >= item.materials[0].linenCost * (item.crafts)) && (courseLeatherSum >= item.materials[1].courseLeatherCost * (item.crafts)) && (ironIngotSum >= item.materials[2].ironIngotCost * (item.crafts)) && (item.crafts > 0)) {
             setLinenSum(linenSum - item.materials[0].linenCost)
+            setCourseLeatherSum(courseLeatherSum - item.materials[1].courseLeatherCost)
+            setIronIngotSum(ironIngotSum - item.materials[2].ironIngotCost)
         }
 
         if (item.crafts > 0) {
@@ -81,10 +94,16 @@ const Armoring = () => {
 
         setCraftAmount(item.crafts)
         setLinenTotal(item.materials[0].linenCost * (item.crafts))
+        setCourseLeatherTotal(item.materials[1].courseLeatherCost * (item.crafts))
+        setIronIngotTotal(item.materials[2].ironIngotCost * (item.crafts))
         setCraftUpdate(updating)
     }
-    console.log(linenSum)
-    console.log(linenAmount)
+    // console.log("linenSum: " + linenSum)
+    // console.log("linenAmount: " + linenAmount)
+    // console.log("courseSum: " + courseLeatherSum)
+    // console.log("courseAmount: " + courseLeatherAmount)
+    // console.log("ironSum: " + ironIngotSum)
+    // console.log("ironAmount: " + ironIngotAmount)
 
     return (
         <div>
