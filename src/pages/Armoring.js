@@ -98,8 +98,26 @@ const Armoring = () => {
         setIronIngotTotal(item.materials[2].ironIngotCost * (item.crafts))
         setCraftUpdate(updating)
     }
-    // console.log("linenSum: " + linenSum)
-    // console.log("linenAmount: " + linenAmount)
+
+const craft = () => {
+
+    for (var i = 0; i < armoring.length; i++) {
+        if (armoring[i].crafts > 0) {
+            setLinenAmount(linenAmount - linenSum)
+            setCourseLeatherAmount(courseLeatherAmount - courseLeatherSum)
+            setIronIngotAmount(ironIngotAmount - ironIngotSum)
+            setLinenSum(0)
+            setCourseLeatherSum(0)
+            setIronIngotSum(0)
+            setCraftAmount(0)
+        }
+        armoring[i].crafts = 0
+    }
+    //console.log(craftAmount)
+}
+console.log(armoring)
+    console.log("linenSum: " + linenSum)
+    console.log("linenAmount: " + linenAmount)
     // console.log("courseSum: " + courseLeatherSum)
     // console.log("courseAmount: " + courseLeatherAmount)
     // console.log("ironSum: " + ironIngotSum)
@@ -111,8 +129,7 @@ const Armoring = () => {
             <ProfessionsBar />
             <div className="main-container">
                 <div className="mat-container">
-                    <form className="add-form" onSubmit={onSubmit}>
-
+                    <form className="add-form" onSubmit={onSubmit} id="my-form">
                         <div className="mat-wrapper">
                             <AddMaterials matAmount={newPlayer.linen} text={"Linen: "}/>
                             { showAddMats &&
@@ -187,7 +204,7 @@ const Armoring = () => {
                         ))
                     }
                     </div>
-                    <button className="craft-btn">Craft</button>
+                    <button type="submit" form="my-form" onClick={() => craft()} className="craft-btn">Craft</button>
                 </div>
                 { /*
                     <CraftingList />
