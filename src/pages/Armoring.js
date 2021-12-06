@@ -13,6 +13,7 @@ const player = {
   ironIngot: 0,
 }
 
+
 const Armoring = () => {
     const [linenAmount, setLinenAmount] = useState(0)
     const [courseLeatherAmount, setCourseLeatherAmount] = useState(player.courseLeather)
@@ -26,9 +27,10 @@ const Armoring = () => {
     const [courseLeatherSum, setCourseLeatherSum] = useState(0)
     const [ironIngotTotal, setIronIngotTotal] = useState(armoring.ironIngotTotal)
     const [ironIngotSum, setIronIngotSum] = useState(0)
-    
+    const [playerLvl, setPlayerLvl] = useState(0)
+    const [showEditLvl, setShowEditLvl] = useState(false)
 
-
+    const [xp, setXp] = useState(0);
     const [newPlayer, setNewPlayer] = useState(player)
 
     const onSubmit = (e) => {
@@ -38,7 +40,15 @@ const Armoring = () => {
         player.ironIngot = ironIngotAmount
 
         setShowAddMats(false)
-        setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
+        //setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
+        console.log(player)
+    }
+
+    const onSubmitLvl = (e) => {
+        e.preventDefault()
+        player.armoringLvl = playerLvl
+
+        setShowEditLvl(false)
         console.log(player)
     }
  
@@ -129,6 +139,27 @@ console.log(armoring)
             <ProfessionsBar />
             <div className="main-container">
                 <div className="mat-container">
+                    <form className="lvl-form" onSubmit={onSubmitLvl} id="my-form">
+                        <div className="lvl-wrapper">
+                            Armoring lvl: {player.armoringLvl}
+                            { showEditLvl &&
+                                <input 
+                                        className="lvl-input" 
+                                        type="number"
+                                        value={playerLvl} 
+                                        onChange={(e) => setPlayerLvl(parseInt(e.target.value))}
+                                />
+                            }                           
+
+                        { showEditLvl &&
+                            <input type="submit" value="Save" className="edit-btn" />
+                        }
+
+                        { !showEditLvl &&
+                            <button className="edit-btn" onClick={() => setShowEditLvl(!showEditLvl)}>Edit</button>
+                        }
+                        </div>
+                    </form>
                     <form className="add-form" onSubmit={onSubmit} id="my-form">
                         <div className="mat-wrapper">
                             <AddMaterials matAmount={newPlayer.linen} text={"Linen: "}/>

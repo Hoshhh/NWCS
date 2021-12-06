@@ -55,7 +55,27 @@
   align-self: flex-start;
 }
 
+.lvl-form {
+  background-color: #333333;
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  min-width: 398px;
+  max-width: 398px;
+  border-radius: 5px;
+  align-self: flex-start;
+}
+
 .mat-wrapper {
+  background-color: #333333;
+  font-size: 20px;
+  max-width: 398px;
+  margin-left: 16px;
+  margin-top: 16px;
+  display: flex;
+}
+
+.lvl-wrapper {
   background-color: #333333;
   font-size: 20px;
   max-width: 398px;
@@ -66,7 +86,11 @@
 
 .add-form {
   background-color: #333333;
-  border-radius: 5px;
+  border-style: solid;
+  border-color: #474747;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
 }
 
 .input {
@@ -80,12 +104,37 @@
   padding-left: 4px;
 }
 
+.lvl-input {
+  height: 30px;
+  width: 120px;
+  background-color: #c1c1c1;
+  color: #333333;
+  font-weight: bold;
+  margin: auto;
+}
+
 .btn {
   margin: 16px;
   margin-top: 32px;
   float: right;
   display: inline;
   font-size: 18px;
+  border-radius: 5px;
+  font-weight: bold;
+  border-style: none;
+  background-color: #c1c1c1;
+  color: #333333;
+  padding: 4px;
+}
+
+.edit-btn {
+  height: 34px;
+  width: 43px;
+  float: right;
+  display: inline;
+  font-size: 16px;
+  margin-right: 16px;
+  margin-left: auto;
   border-radius: 5px;
   font-weight: bold;
   border-style: none;
