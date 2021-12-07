@@ -40,8 +40,8 @@ const Armoring = () => {
         player.ironIngot = ironIngotAmount
 
         setShowAddMats(false)
-        //setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
-        console.log(player)
+        setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
+        console.log(newPlayer)
     }
 
     const onSubmitLvl = (e) => {
@@ -49,7 +49,8 @@ const Armoring = () => {
         player.armoringLvl = playerLvl
 
         setShowEditLvl(false)
-        console.log(player)
+        setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
+        console.log(newPlayer)
     }
  
 
@@ -120,14 +121,17 @@ const craft = () => {
             setCourseLeatherSum(0)
             setIronIngotSum(0)
             setCraftAmount(0)
+
+            console.log(newPlayer)
         }
         armoring[i].crafts = 0
     }
     //console.log(craftAmount)
 }
-console.log(armoring)
-    console.log("linenSum: " + linenSum)
-    console.log("linenAmount: " + linenAmount)
+//console.log(armoring)
+//console.log(xp)
+//console.log("linenSum: " + linenSum)
+    //console.log("linenAmount: " + linenAmount)
     // console.log("courseSum: " + courseLeatherSum)
     // console.log("courseAmount: " + courseLeatherAmount)
     // console.log("ironSum: " + ironIngotSum)
@@ -139,7 +143,7 @@ console.log(armoring)
             <ProfessionsBar />
             <div className="main-container">
                 <div className="mat-container">
-                    <form className="lvl-form" onSubmit={onSubmitLvl} id="my-form">
+                    <form className="add-form" onSubmit={onSubmit} id="my-form">
                         <div className="lvl-wrapper">
                             Armoring lvl: {player.armoringLvl}
                             { showEditLvl &&
@@ -159,8 +163,7 @@ console.log(armoring)
                             <button className="edit-btn" onClick={() => setShowEditLvl(!showEditLvl)}>Edit</button>
                         }
                         </div>
-                    </form>
-                    <form className="add-form" onSubmit={onSubmit} id="my-form">
+
                         <div className="mat-wrapper">
                             <AddMaterials matAmount={newPlayer.linen} text={"Linen: "}/>
                             { showAddMats &&
