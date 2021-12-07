@@ -38,21 +38,13 @@ const Armoring = () => {
         player.linen = linenAmount
         player.courseLeather = courseLeatherAmount
         player.ironIngot = ironIngotAmount
-
-        setShowAddMats(false)
-        setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
-        console.log(newPlayer)
-    }
-
-    const onSubmitLvl = (e) => {
-        e.preventDefault()
         player.armoringLvl = playerLvl
 
+        setShowAddMats(false)
         setShowEditLvl(false)
         setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
         console.log(newPlayer)
     }
- 
 
     const add = (item) => {
         let updating = craftUpdate //Used to rerender when there's no value changed between the different "craftAmounts"
@@ -145,7 +137,7 @@ const craft = () => {
                 <div className="mat-container">
                     <form className="add-form" onSubmit={onSubmit} id="my-form">
                         <div className="lvl-wrapper">
-                            Armoring lvl: {player.armoringLvl}
+                            Armoring lvl: {newPlayer.armoringLvl}
                             { showEditLvl &&
                                 <input 
                                         className="lvl-input" 
