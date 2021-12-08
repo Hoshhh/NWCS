@@ -5,6 +5,7 @@ import ProfessionsBar from '../components/ProfessionsBar'
 import AddMaterials from '../components/AddMaterials'
 //import MaterialsRequired from '../components/MaterialsRequired'
 import armoring from '../Craftables/armoringCrafts'
+import levels from '../Craftables/armoringLevels'
 
 const player = {
   armoringLvl: 0,
@@ -43,7 +44,7 @@ const Armoring = () => {
         setShowAddMats(false)
         setShowEditLvl(false)
         setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
-        console.log(newPlayer)
+        //console.log(newPlayer)
     }
 
     const add = (item) => {
@@ -71,6 +72,7 @@ const Armoring = () => {
                 }
                 item.crafts++
                 setCraftAmount(item.crafts)
+                setXp( xp + item.xp)
                 if (item.crafts > 0) {
                     setLinenTotal(item.materials[0].linenCost * (item.crafts))
                     setCourseLeatherTotal(item.materials[1].courseLeatherCost * (item.crafts))
@@ -93,6 +95,7 @@ const Armoring = () => {
 
         if (item.crafts > 0) {
             item.crafts--
+            setXp( xp - item.xp)
         }
 
         setCraftAmount(item.crafts)
@@ -114,14 +117,23 @@ const craft = () => {
             setIronIngotSum(0)
             setCraftAmount(0)
 
-            console.log(newPlayer)
+            //console.log(newPlayer)
         }
         armoring[i].crafts = 0
     }
-    //console.log(craftAmount)
+
+    for (var key in levels) {
+        if (levels.hasOwnProperty(key)) {
+            if (xp >= levels[key]) {
+                player.armoringLvl = parseInt(key)
+            }
+        }
+    }
+    setPlayerLvl(player.armoringLvl)
 }
+console.log(playerLvl)
 //console.log(armoring)
-//console.log(xp)
+console.log(xp)
 //console.log("linenSum: " + linenSum)
     //console.log("linenAmount: " + linenAmount)
     // console.log("courseSum: " + courseLeatherSum)
