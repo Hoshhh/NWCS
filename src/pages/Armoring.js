@@ -44,7 +44,15 @@ const Armoring = () => {
         setShowAddMats(false)
         setShowEditLvl(false)
         setNewPlayer({...player, linenAmount, courseLeatherAmount, ironIngotAmount})
-        //console.log(newPlayer)
+
+        for (var key in levels) {
+            if (levels.hasOwnProperty(key)) {
+                if (player.armoringLvl === parseInt(key) && xp <= levels[key]) {
+                    setXp(levels[key]) 
+                }
+            }
+        }
+        console.log(xp)
     }
 
     const add = (item) => {
