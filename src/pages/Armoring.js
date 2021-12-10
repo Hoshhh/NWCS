@@ -3,7 +3,7 @@ import "../Styles/Armoring.css"
 import Navbar from '../components/Navbar'
 import ProfessionsBar from '../components/ProfessionsBar'
 import AddMaterials from '../components/AddMaterials'
-//import MaterialsRequired from '../components/MaterialsRequired'
+import MaterialsRequired from '../components/MaterialsRequired'
 import armoring from '../Craftables/armoringCrafts'
 import levels from '../Craftables/armoringLevels'
 
@@ -20,18 +20,20 @@ const Armoring = () => {
     const [courseLeatherAmount, setCourseLeatherAmount] = useState(player.courseLeather)
     const [ironIngotAmount, setIronIngotAmount] = useState(player.ironIngot)
     const [showAddMats, setShowAddMats] = useState(false)
-    const [craftAmount, setCraftAmount] = useState(armoring.crafts)
+    const [craftAmount, setCraftAmount] = useState(0)
     const [craftUpdate, setCraftUpdate] = useState(0)
-    const [linenTotal, setLinenTotal] = useState(armoring.linenTotal)
+    const [linenTotal, setLinenTotal] = useState(0)
     const [linenSum, setLinenSum] = useState(0)
-    const [courseLeatherTotal, setCourseLeatherTotal] = useState(armoring.courseLeatherTotal)
+    const [courseLeatherTotal, setCourseLeatherTotal] = useState(0)
     const [courseLeatherSum, setCourseLeatherSum] = useState(0)
-    const [ironIngotTotal, setIronIngotTotal] = useState(armoring.ironIngotTotal)
+    const [ironIngotTotal, setIronIngotTotal] = useState(0)
     const [ironIngotSum, setIronIngotSum] = useState(0)
     const [playerLvl, setPlayerLvl] = useState(0)
     const [showEditLvl, setShowEditLvl] = useState(false)
+    const [percentage, setPercentage] = useState(0)
 
     const [xp, setXp] = useState(0);
+    const [xpLeft, setXpLeft] = useState(0)
     const [newPlayer, setNewPlayer] = useState(player)
 
     const onSubmit = (e) => {
@@ -50,9 +52,16 @@ const Armoring = () => {
                 if (player.armoringLvl === parseInt(key) && xp <= levels[key]) {
                     setXp(levels[key]) 
                 }
+
+                // setXpLeft((levels[player.armoringLvl + 1] - levels[player.armoringLvl]) - (xp - levels[player.armoringLvl]))
+                // setPercentage(Math.round(100 * (xp - levels[player.armoringLvl])/(levels[player.armoringLvl + 1] - levels[player.armoringLvl])))
+                
             }
         }
-        console.log(xp)
+        //console.log(xp - levels[player.armoringLvl])
+        //console.log(levels[player.armoringLvl + 1] - levels[player.armoringLvl])
+        //console.log(xpLeft)
+        //console.log(percentage)
     }
 
     const add = (item) => {
@@ -76,19 +85,21 @@ const Armoring = () => {
             if ((item.materials[0].linenCost * (item.crafts) < linenAmount + item.materials[0].linenCost) && (item.materials[1].courseLeatherCost * (item.crafts) < courseLeatherAmount + item.materials[1].courseLeatherCost) && (item.materials[2].ironIngotCost * (item.crafts) < ironIngotAmount + item.materials[2].ironIngotCost)) {
                 if ((item.materials[0].linenCost * (item.crafts) > linenAmount - item.materials[0].linenCost) && (item.materials[1].courseLeatherCost * (item.crafts) > courseLeatherAmount - item.materials[1].courseLeatherCost) && (item.materials[2].ironIngotCost * (item.crafts) > ironIngotAmount - item.materials[2].ironIngotCost)) {
                     item.crafts--
-                    setCraftAmount(item.crafts)
+                    //setCraftAmount(item.crafts)
                 }
                 item.crafts++
-                setCraftAmount(item.crafts)
+                setCraftAmount(craftAmount + 1)
+                console.log(craftAmount)
                 setXp( xp + item.xp)
                 if (item.crafts > 0) {
-                    setLinenTotal(item.materials[0].linenCost * (item.crafts))
-                    setCourseLeatherTotal(item.materials[1].courseLeatherCost * (item.crafts))
-                    setIronIngotTotal(item.materials[2].ironIngotCost * (item.crafts))
+                    setLinenTotal(linenTotal + (item.materials[0].linenCost))
+                    setCourseLeatherTotal(courseLeatherTotal + (item.materials[1].courseLeatherCost))
+                    setIronIngotTotal(ironIngotTotal + (item.materials[2].ironIngotCost))
                 }
             }
         }
         setCraftUpdate(updating)
+        //console.log(item.crafts)
     }
 
     const subtract = (item) => {      
@@ -104,15 +115,19 @@ const Armoring = () => {
         if (item.crafts > 0) {
             item.crafts--
             setXp( xp - item.xp)
+            setCraftAmount(craftAmount - 1)
+
+            if (craftAmount > 0) {
+                setLinenTotal(linenTotal - (item.materials[0].linenCost))
+                setCourseLeatherTotal(courseLeatherTotal - (item.materials[1].courseLeatherCost))
+                setIronIngotTotal(ironIngotTotal - (item.materials[2].ironIngotCost))
+            }
         }
 
-        setCraftAmount(item.crafts)
-        setLinenTotal(item.materials[0].linenCost * (item.crafts))
-        setCourseLeatherTotal(item.materials[1].courseLeatherCost * (item.crafts))
-        setIronIngotTotal(item.materials[2].ironIngotCost * (item.crafts))
+        console.log(craftAmount)
         setCraftUpdate(updating)
+        //console.log(craftAmount)
     }
-
 const craft = () => {
 
     for (var i = 0; i < armoring.length; i++) {
@@ -135,13 +150,27 @@ const craft = () => {
             if (xp >= levels[key]) {
                 player.armoringLvl = parseInt(key)
             }
+
+            setXpLeft((levels[player.armoringLvl + 1] - levels[player.armoringLvl]) - (xp - levels[player.armoringLvl]))
+            setPercentage(Math.round(100 * (xp - levels[player.armoringLvl])/(levels[player.armoringLvl + 1] - levels[player.armoringLvl])))
         }
     }
+    //console.log(xp - levels[player.armoringLvl])
+    //console.log(levels[player.armoringLvl + 1] - levels[player.armoringLvl])
+    //console.log(percentage)
     setPlayerLvl(player.armoringLvl)
+
+    //setLinenTotal(0)
+    //setCourseLeatherTotal(0)
+    //setIronIngotTotal(0)
 }
-console.log(playerLvl)
+//console.log(xpLeft)
+//console.log(playerLvl)
 //console.log(armoring)
-console.log(xp)
+//console.log(linenTotal)
+//console.log(courseLeatherTotal)
+//console.log(ironIngotTotal)
+//console.log(xp)
 //console.log("linenSum: " + linenSum)
     //console.log("linenAmount: " + linenAmount)
     // console.log("courseSum: " + courseLeatherSum)
@@ -252,12 +281,9 @@ console.log(xp)
                     </div>
                     <button type="submit" form="my-form" onClick={() => craft()} className="craft-btn">Craft</button>
                 </div>
-                { /*
-                    <CraftingList />
-                    <MaterialsRequired />
-                    <button>Craft</button>
-                    */
-                }
+                
+                <MaterialsRequired linen={linenTotal} course={courseLeatherTotal} iron={ironIngotTotal} percent={percentage} remaining={xpLeft} />
+
             </div> 
         </div>
     )

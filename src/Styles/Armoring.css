@@ -147,7 +147,6 @@
   background-color: #333333;
   margin: auto;
   margin-top: 32px;
-  margin-bottom: 32px;
   min-width: 398px;
   max-width: 398px;
   border-radius: 5px;
@@ -237,4 +236,76 @@
   font-size: 20px;
   margin-right: 8px;
   margin-bottom: 8px;
+}
+
+.req-container {
+  background-color: #333333;
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  min-width: 398px;
+  max-width: 398px;
+  max-height: 300px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.total-container {
+  background-color: #333333;
+  margin: 16px;
+}
+
+.linen {
+  background-color: #333333;
+  margin-bottom: 16px;
+}
+.course {
+  background-color: #333333;
+  margin-bottom: 16px;
+}
+.iron {
+  background-color: #333333;
+  margin-bottom: 16px;
+}
+
+.percent-container {
+  margin-top: 100px;
+  background-color: #333333;
+  font-size: 20px;
+}
+
+.percent {
+  margin: 16px;
+  margin-bottom: 4px;
+  background-color: #333333;
+}
+
+.next-level {
+  margin: 16px;
+  margin-top: 0px;
+  background-color: #333333;
+}
+
+.material {
+  background-color: #333333;
+  display: inline;
+  float: right;
+  color: red;
+  font-style: bold;
+}
+
+.percentage {
+  background-color: #333333;
+  display: inline;
+  float: right;
+  color: green;
+  font-style: bold;
+}
+
+.xp-remaining {
+  background-color: #333333;
+  display: inline;
+  float: right;
+  color: green;
+  font-style: bold;
 }
