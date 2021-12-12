@@ -53,15 +53,9 @@ const Armoring = () => {
                     setXp(levels[key]) 
                 }
 
-                // setXpLeft((levels[player.armoringLvl + 1] - levels[player.armoringLvl]) - (xp - levels[player.armoringLvl]))
-                // setPercentage(Math.round(100 * (xp - levels[player.armoringLvl])/(levels[player.armoringLvl + 1] - levels[player.armoringLvl])))
-                
+                setXpLeft((levels[player.armoringLvl + 1] - levels[player.armoringLvl]) - (xp - levels[player.armoringLvl]))
             }
         }
-        //console.log(xp - levels[player.armoringLvl])
-        //console.log(levels[player.armoringLvl + 1] - levels[player.armoringLvl])
-        //console.log(xpLeft)
-        //console.log(percentage)
     }
 
     const add = (item) => {
@@ -85,7 +79,6 @@ const Armoring = () => {
             if ((item.materials[0].linenCost * (item.crafts) < linenAmount + item.materials[0].linenCost) && (item.materials[1].courseLeatherCost * (item.crafts) < courseLeatherAmount + item.materials[1].courseLeatherCost) && (item.materials[2].ironIngotCost * (item.crafts) < ironIngotAmount + item.materials[2].ironIngotCost)) {
                 if ((item.materials[0].linenCost * (item.crafts) > linenAmount - item.materials[0].linenCost) && (item.materials[1].courseLeatherCost * (item.crafts) > courseLeatherAmount - item.materials[1].courseLeatherCost) && (item.materials[2].ironIngotCost * (item.crafts) > ironIngotAmount - item.materials[2].ironIngotCost)) {
                     item.crafts--
-                    //setCraftAmount(item.crafts)
                 }
                 item.crafts++
                 setCraftAmount(craftAmount + 1)
@@ -99,7 +92,6 @@ const Armoring = () => {
             }
         }
         setCraftUpdate(updating)
-        //console.log(item.crafts)
     }
 
     const subtract = (item) => {      
@@ -123,13 +115,13 @@ const Armoring = () => {
                 setIronIngotTotal(ironIngotTotal - (item.materials[2].ironIngotCost))
             }
         }
+        
 
         console.log(craftAmount)
         setCraftUpdate(updating)
-        //console.log(craftAmount)
     }
-const craft = () => {
 
+const craft = () => {
     for (var i = 0; i < armoring.length; i++) {
         if (armoring[i].crafts > 0) {
             setLinenAmount(linenAmount - linenSum)
@@ -139,8 +131,6 @@ const craft = () => {
             setCourseLeatherSum(0)
             setIronIngotSum(0)
             setCraftAmount(0)
-
-            //console.log(newPlayer)
         }
         armoring[i].crafts = 0
     }
@@ -155,28 +145,9 @@ const craft = () => {
             setPercentage(Math.round(100 * (xp - levels[player.armoringLvl])/(levels[player.armoringLvl + 1] - levels[player.armoringLvl])))
         }
     }
-    //console.log(xp - levels[player.armoringLvl])
-    //console.log(levels[player.armoringLvl + 1] - levels[player.armoringLvl])
-    //console.log(percentage)
     setPlayerLvl(player.armoringLvl)
-
-    //setLinenTotal(0)
-    //setCourseLeatherTotal(0)
-    //setIronIngotTotal(0)
 }
-//console.log(xpLeft)
-//console.log(playerLvl)
-//console.log(armoring)
-//console.log(linenTotal)
-//console.log(courseLeatherTotal)
-//console.log(ironIngotTotal)
-//console.log(xp)
-//console.log("linenSum: " + linenSum)
-    //console.log("linenAmount: " + linenAmount)
-    // console.log("courseSum: " + courseLeatherSum)
-    // console.log("courseAmount: " + courseLeatherAmount)
-    // console.log("ironSum: " + ironIngotSum)
-    // console.log("ironAmount: " + ironIngotAmount)
+
 
     return (
         <div>
@@ -252,7 +223,7 @@ const craft = () => {
                     </form>
                 </div>
 
-                {/* Crafting List --------- */}
+
                 <div className="crafting-container">
                     <div className="crafting-wrapper">
                     {
@@ -264,6 +235,8 @@ const craft = () => {
                                             <div className="item-flex-container">
                                                 <img className="item-img" src={item.img} alt=""/>
                                                 <div className="item-name">{item.name}</div>
+                                            </div>
+                                            <div className="xp-flex-container">
                                                 <div className="item-xp" >{item.xp}</div>
                                             </div>
                                             <div className="btn-flex-container">
@@ -281,9 +254,9 @@ const craft = () => {
                     </div>
                     <button type="submit" form="my-form" onClick={() => craft()} className="craft-btn">Craft</button>
                 </div>
+
                 
                 <MaterialsRequired linen={linenTotal} course={courseLeatherTotal} iron={ironIngotTotal} percent={percentage} remaining={xpLeft} />
-
             </div> 
         </div>
     )
